@@ -1,8 +1,10 @@
 import streamlit as st
 
 def show():
-    st.title("📊 Global Inequality Dashboard")
+    st.title("📊 Inequality Dashboard")
 
-    powerbi_url = "PASTE_YOUR_POWERBI_LINK_HERE"
+    st.write("Interactive Power BI dashboard:")
 
-    st.components.v1.iframe(powerbi_url, height=600)
+    powerbi_url = "PASTE_YOUR_IFRAME_LINK"
+
+    st.components.v1.iframe(powerbi_url, height=700)

@@ -1,7 +1,7 @@
 import streamlit as st
 
 def show():
-    st.title("📞 Contact Us")
+    st.title("📞 Contact")
 
-    st.write("Email: example@gmail.com")
-    st.write("LinkedIn: linkedin.com/in/yourprofile")
+    st.write("📧 Email: your@email.com")
+    st.write("🔗 LinkedIn: yourprofile")

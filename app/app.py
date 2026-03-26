@@ -2,9 +2,19 @@ import streamlit as st
 from auth import login
 from chatbot import chatbot_ui
 
-from pages import about, dashboard, map, contact
+from pages import home, dashboard, map, insights, contact
 
-st.set_page_config(page_title="Global Inequality Dashboard", layout="wide")
+st.set_page_config(page_title="Global Income Inequality", layout="wide")
+
+# load css
+from pathlib import Path
+
+css_path = Path(__file__).resolve().parent.parent / "assets" / "style.css"
+if css_path.exists():
+    with open(css_path, "r", encoding="utf-8") as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+else:
+    st.warning(f"CSS file not found at: {css_path}. Using default theme.")
 
 # session
 if "logged_in" not in st.session_state:
@@ -16,23 +26,26 @@ if not st.session_state.logged_in:
     st.stop()
 
 # sidebar
-st.sidebar.title("🌍 Navigation")
+st.sidebar.title("🌍 Global Inequality")
 
 page = st.sidebar.radio(
-    "Go to",
-    ["Dashboard", "Map", "About Us", "Contact Us"]
+    "Navigation",
+    ["Home", "Dashboard", "Map", "Insights", "Contact"]
 )
 
-# chatbot toggle
-if st.sidebar.button("💬 AI Assistant"):
+st.sidebar.markdown("---")
+
+if st.sidebar.button("🤖 AI Assistant"):
     chatbot_ui()
 
 # routing
-if page == "Dashboard":
+if page == "Home":
+    home.show()
+elif page == "Dashboard":
     dashboard.show()
 elif page == "Map":
     map.show()
-elif page == "About Us":
-    about.show()
-elif page == "Contact Us":
+elif page == "Insights":
+    insights.show()
+elif page == "Contact":
     contact.show()

@@ -3,10 +3,12 @@ import streamlit as st
 def chatbot_ui():
     st.sidebar.subheader("🤖 AI Assistant")
 
-    query = st.sidebar.text_input("Ask a question")
+    query = st.sidebar.text_input("Ask about inequality")
 
     if query:
-        if "inequality" in query.lower():
-            st.sidebar.write("AI: Inequality refers to unequal distribution of resources.")
-        else:
-            st.sidebar.write("AI: Try asking about inequality or the dashboard.")
+        st.sidebar.write("AI:", generate_response(query))
+
+def generate_response(q):
+    if "gini" in q.lower():
+        return "Gini index measures income inequality from 0 (equal) to 100 (unequal)."
+    return "Ask about income inequality, trends, or countries."
