@@ -65,46 +65,50 @@ export default function Dashboard() {
         position: 'relative',
       }}>
         {/* Placeholder overlay when no token is set */}
-        <div style={{
-          position: 'absolute', inset: 0, zIndex: 5,
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          background: 'rgba(7,14,36,0.8)',
-          backdropFilter: 'blur(4px)',
-        }}>
+        {!process.env.NEXT_PUBLIC_POWERBI_IFRAME_LINK && (
           <div style={{
-            width: '56px', height: '56px',
-            background: 'rgba(77,240,197,0.1)',
-            border: '1px solid rgba(77,240,197,0.25)',
-            borderRadius: '16px',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            marginBottom: '1.25rem',
+            position: 'absolute', inset: 0, zIndex: 5,
+            display: 'flex', flexDirection: 'column',
+            alignItems: 'center', justifyContent: 'center',
+            background: 'rgba(7,14,36,0.8)',
+            backdropFilter: 'blur(4px)',
           }}>
-            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect x="2" y="12" width="4" height="8" rx="1" fill="var(--accent)" opacity="0.7"/>
-              <rect x="9" y="7" width="4" height="13" rx="1" fill="var(--accent)" opacity="0.85"/>
-              <rect x="16" y="2" width="4" height="18" rx="1" fill="var(--accent)"/>
-            </svg>
+            <div style={{
+              width: '56px', height: '56px',
+              background: 'rgba(77,240,197,0.1)',
+              border: '1px solid rgba(77,240,197,0.25)',
+              borderRadius: '16px',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              marginBottom: '1.25rem',
+            }}>
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                <rect x="2" y="12" width="4" height="8" rx="1" fill="var(--accent)" opacity="0.7"/>
+                <rect x="9" y="7" width="4" height="13" rx="1" fill="var(--accent)" opacity="0.85"/>
+                <rect x="16" y="2" width="4" height="18" rx="1" fill="var(--accent)"/>
+              </svg>
+            </div>
+            <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.25rem', marginBottom: '0.5rem' }}>
+              Power BI Embed
+            </p>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textAlign: 'center', maxWidth: '320px' }}>
+              Set the{' '}
+              <code style={{ color: 'var(--accent)', background: 'rgba(77,240,197,0.08)', padding: '1px 5px', borderRadius: '4px' }}>
+                NEXT_PUBLIC_POWERBI_IFRAME_LINK
+              </code>
+              {' '}environment variable in your .env file with your Power BI Publish-to-Web link.
+            </p>
           </div>
-          <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.25rem', marginBottom: '0.5rem' }}>
-            Power BI Embed
-          </p>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', textAlign: 'center', maxWidth: '320px' }}>
-            Replace the embed URL in{' '}
-            <code style={{ color: 'var(--accent)', background: 'rgba(77,240,197,0.08)', padding: '1px 5px', borderRadius: '4px' }}>
-              dashboard/page.tsx
-            </code>
-            {' '}with your Power BI Publish-to-Web link.
-          </p>
-        </div>
+        )}
 
-        <iframe
-          src="https://app.powerbi.com/view?r=eyJrIjoiYOUR_EMBED_TOKEN_HERE"
-          width="100%"
-          height="820"
-          allowFullScreen
-          style={{ display: 'block', border: 'none' }}
-        />
+        {process.env.NEXT_PUBLIC_POWERBI_IFRAME_LINK && (
+          <iframe
+            src={process.env.NEXT_PUBLIC_POWERBI_IFRAME_LINK}
+            width="100%"
+            height="820"
+            allowFullScreen
+            style={{ display: 'block', border: 'none' }}
+          />
+        )}
       </div>
     </div>
   );
