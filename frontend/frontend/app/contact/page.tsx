@@ -45,7 +45,7 @@ export default function ContactPage() {
               Email
             </p>
             <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.4rem', color: 'var(--text-primary)' }}>
-              info@globalinequality.org
+              rishikarora2006@gmail.com
             </p>
           </div>
           <div style={{
@@ -65,7 +65,7 @@ export default function ContactPage() {
 
         {/* LinkedIn */}
         <a
-          href="https://linkedin.com/company/global-income-inequality"
+          href="www.linkedin.com/in/rishika-arora-49b2b62b9"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -85,7 +85,7 @@ export default function ContactPage() {
               LinkedIn
             </p>
             <p style={{ fontFamily: "'DM Serif Display', serif", fontSize: '1.4rem', color: 'var(--text-primary)' }}>
-              /company/global-income-inequality
+              /in/rishika-arora-49b2b62b9
             </p>
           </div>
           <div style={{
@@ -116,10 +116,12 @@ export default function ContactPage() {
           width: '8px', height: '8px', borderRadius: '50%',
           background: 'var(--accent)', marginTop: '7px', flexShrink: 0,
         }} />
+        {/* 
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.7 }}>
           We typically respond within 2–3 business days. For urgent academic or policy collaboration inquiries,
           please mention your affiliation in the subject line.
-        </p>
+        </p> 
+        */}
       </div>
     </div>
   );
